@@ -69,7 +69,7 @@ File: `.github/workflows/site.yml`
    - `PATH_PREFIX` = `/<repo>/`  
      (Eleventy `pathPrefix` so `/assets/...` becomes `/<repo>/assets/...`).
 
-**Only on push to `main`**
+**On push to `main` or a manual “Run workflow” on `main`**
 
 4. **`actions/upload-artifact`** saves `_site/` from the Pages build.
 5. **`deploy` job:** **`actions/upload-pages-artifact`** then **`actions/deploy-pages`** publishes to GitHub Pages.

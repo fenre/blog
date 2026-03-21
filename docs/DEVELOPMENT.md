@@ -12,7 +12,7 @@ This file records how the site is assembled so you can **reproduce or redo** the
 | What | Where |
 |------|--------|
 | **Build every push / PR** | [`.github/workflows/site.yml`](../.github/workflows/site.yml) — `npm ci`, two Eleventy builds (default + GitHub Pages env). |
-| **Deploy** | Same workflow: only on **push to `main`**, uploads `_site/` and runs GitHub Pages deploy. PRs and forks never get `pages: write`. |
+| **Deploy** | Same workflow: **push to `main`** or **Run workflow** on `main` — uploads `_site/` and runs GitHub Pages deploy. PRs and forks never get `pages: write`. |
 | **Manual run** | Actions → **Site** → **Run workflow** (`workflow_dispatch`). |
 | **Dependency updates** | [`.github/dependabot.yml`](../.github/dependabot.yml) — weekly PRs for npm and Actions; optional auto-merge after CI. |
 

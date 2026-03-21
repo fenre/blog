@@ -1,4 +1,4 @@
-# One pipeline: verify every push/PR; publish to GitHub Pages only on push to main.
+# One pipeline: verify every push/PR; publish to GitHub Pages on push to main or manual run on main.
 name: Site
 
 on:
@@ -27,7 +27,7 @@ jobs:
           SITE_URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}
           PATH_PREFIX: /${{ github.event.repository.name }}/
       - name: Upload _site for deploy
-        if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+        if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
         uses: actions/upload-artifact@v4
         with:
           name: site
@@ -36,7 +36,7 @@ jobs:
 
   deploy:
     needs: build
-    if: github.ref == 'refs/heads/main' && github.event_name == 'push'
+    if: github.ref == 'refs/heads/main' && (github.event_name == 'push' || github.event_name == 'workflow_dispatch')
     runs-on: ubuntu-latest
     concurrency:
       group: pages

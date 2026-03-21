@@ -2,6 +2,12 @@
 
 All notable changes to this project are documented here. Versions follow the site version in `package.json`.
 
+## 1.3.1 — 2026-03-21
+
+### Fixed
+
+- **`.github/workflows/site.yml`** — deploy and artifact upload now run on **`workflow_dispatch`** for `main` as well as on `push`, so “Run workflow” in the Actions tab actually publishes to Pages (previously only the build job ran).
+
 ## 1.3.0 — 2026-03-21
 
 ### Summary
