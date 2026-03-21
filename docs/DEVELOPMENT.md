@@ -7,6 +7,17 @@ This file records how the site is assembled so you can **reproduce or redo** the
 - **Node.js** (current LTS is fine) and **npm** — for Eleventy.
 - **Python 3** — for the optional Blogger re-export script only.
 
+## Automation (CI, Pages, dependencies)
+
+| What | Where |
+|------|--------|
+| **Build every push / PR** | [`.github/workflows/site.yml`](../.github/workflows/site.yml) — `npm ci`, two Eleventy builds (default + GitHub Pages env). |
+| **Deploy** | Same workflow: only on **push to `main`**, uploads `_site/` and runs GitHub Pages deploy. PRs and forks never get `pages: write`. |
+| **Manual run** | Actions → **Site** → **Run workflow** (`workflow_dispatch`). |
+| **Dependency updates** | [`.github/dependabot.yml`](../.github/dependabot.yml) — weekly PRs for npm and Actions; optional auto-merge after CI. |
+
+See [GITHUB_PAGES.md](GITHUB_PAGES.md) for Pages settings and troubleshooting.
+
 ## Repository layout
 
 | Path | Purpose |
@@ -22,7 +33,8 @@ This file records how the site is assembled so you can **reproduce or redo** the
 | `scripts/export_blogger_fsudmann.py` | Fetches Blogger Atom feed for `www.fsudmann.com`, writes/updates posts and images. |
 | `requirements.txt` | Python dependencies for the export script. |
 | `_site/` | **Generated** — do not edit; created by `npm run build`. Gitignored. |
-| `content/_data/metadata.json` | Site-wide values for URLs and SEO/AI metadata (`siteUrl`, `title`, `description`, `author`, `locale`). **Update `siteUrl` if the static site is served from a different origin** (e.g. GitHub Pages) so canonical URLs, RSS, sitemap, and `llms.txt` stay correct. |
+| `content/_data/metadata.base.json` | Default site-wide values (`siteUrl`, `title`, `description`, `author`, `locale`). Loaded by `metadata.js`. |
+| `content/_data/metadata.js` | Exposes `metadata` to templates; **`siteUrl` can be overridden with env `SITE_URL`** (used by GitHub Actions for Pages). |
 | `content/feed.xml.njk`, `sitemap.xml.njk`, `robots.txt.njk`, `llms.txt.njk` | Generated machine-readable endpoints (RSS, sitemap, robots, llms.txt). |
 
 ## AI and machine-readable discovery

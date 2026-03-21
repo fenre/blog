@@ -43,6 +43,18 @@ export default function (eleventyConfig) {
     return base + p;
   });
 
+  /**
+   * Absolute URL for a site path. Uses string join (not `new URL(path)`) so paths like
+   * `/posts/foo/` append after a subpath site root (e.g. `https://user.github.io/repo`).
+   */
+  eleventyConfig.addFilter("fullSiteUrl", (pathname, siteRoot) => {
+    if (!siteRoot) return pathname || "";
+    const root = String(siteRoot).replace(/\/$/, "");
+    if (!pathname || pathname === "/") return `${root}/`;
+    const p = pathname.startsWith("/") ? pathname : `/${pathname}`;
+    return root + p;
+  });
+
   eleventyConfig.addFilter("jsonLdSafe", (obj) => {
     if (!obj) return "";
     return JSON.stringify(obj).replace(/</g, "\\u003c");
@@ -77,7 +89,14 @@ export default function (eleventyConfig) {
     eleventyConfig.addPassthroughCopy(`content/posts/**/*.${ext}`);
   }
 
+  const raw = process.env.PATH_PREFIX ?? "/";
+  const pathPrefix =
+    raw === "/" || raw === ""
+      ? "/"
+      : `/${String(raw).replace(/^\/+|\/+$/g, "")}/`;
+
   return {
+    pathPrefix,
     dir: {
       input: "content",
       includes: "_includes",

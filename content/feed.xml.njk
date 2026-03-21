@@ -7,14 +7,14 @@ eleventyExcludeFromCollections: true
   <channel>
     <title>{{ metadata.title | xmlEscape }}</title>
     <description>{{ metadata.description | xmlEscape }}</description>
-    <link>{{ metadata.siteUrl | stripTrailingSlash }}/</link>
+    <link>{{ '/' | fullSiteUrl(metadata.siteUrl) }}</link>
     <language>{{ metadata.language }}</language>
-    <atom:link href="{{ metadata.siteUrl | stripTrailingSlash }}/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="{{ '/feed.xml' | fullSiteUrl(metadata.siteUrl) }}" rel="self" type="application/rss+xml"/>
     {% for post in collections.postsSorted %}
     <item>
       <title>{{ post.data.title | xmlEscape }}</title>
-      <link>{{ metadata.siteUrl | stripTrailingSlash }}{{ post.url }}</link>
-      <guid>{{ metadata.siteUrl | stripTrailingSlash }}{{ post.url }}</guid>
+      <link>{{ post.url | fullSiteUrl(metadata.siteUrl) }}</link>
+      <guid>{{ post.url | fullSiteUrl(metadata.siteUrl) }}</guid>
       <pubDate>{{ post.date | rssDate }}</pubDate>
       <description>{{ post.data.metaDescription | default(post.data.title) | xmlEscape }}</description>
       <content:encoded><![CDATA[{{ post.templateContent | safe }}]]></content:encoded>

@@ -1,6 +1,14 @@
 import fs from "node:fs";
 import path from "node:path";
 
+function fullSiteUrl(siteRoot, pathname) {
+  if (!siteRoot) return pathname || "";
+  const root = siteRoot.replace(/\/$/, "");
+  if (!pathname || pathname === "/") return `${root}/`;
+  const p = pathname.startsWith("/") ? pathname : `/${pathname}`;
+  return root + p;
+}
+
 function slugFromStem(stem) {
   const parts = stem.split("/").filter(Boolean);
   const i = parts.indexOf("posts");
@@ -36,12 +44,12 @@ export default {
     ogImageAbsolute: (data) => {
       const base = (data.metadata?.siteUrl || "").replace(/\/$/, "");
       const rel = firstImagePublicPath(data.page.filePathStem);
-      return rel ? base + rel : "";
+      return rel ? fullSiteUrl(base, rel) : "";
     },
     blogPostingJsonLd: (data) => {
       const base = (data.metadata?.siteUrl || "").replace(/\/$/, "");
       const pageUrl = data.page.url;
-      const url = base + pageUrl;
+      const url = fullSiteUrl(base, pageUrl);
       const raw = data.date instanceof Date ? data.date : new Date(data.date);
       const iso = Number.isNaN(raw.getTime()) ? undefined : raw.toISOString();
       const desc =
@@ -69,7 +77,7 @@ export default {
       };
 
       if (imgPath) {
-        obj.image = [base + imgPath];
+        obj.image = [fullSiteUrl(base, imgPath)];
       }
 
       if (Array.isArray(data.categories) && data.categories.length) {

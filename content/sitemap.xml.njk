@@ -5,20 +5,20 @@ eleventyExcludeFromCollections: true
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>{{ metadata.siteUrl | stripTrailingSlash }}/</loc>
+    <loc>{{ '/' | fullSiteUrl(metadata.siteUrl) }}</loc>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>{{ metadata.siteUrl | stripTrailingSlash }}/feed.xml</loc>
+    <loc>{{ '/feed.xml' | fullSiteUrl(metadata.siteUrl) }}</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>{{ metadata.siteUrl | stripTrailingSlash }}/llms.txt</loc>
+    <loc>{{ '/llms.txt' | fullSiteUrl(metadata.siteUrl) }}</loc>
     <changefreq>monthly</changefreq>
   </url>
   {% for post in collections.postsSorted %}
   <url>
-    <loc>{{ metadata.siteUrl | stripTrailingSlash }}{{ post.url }}</loc>
+    <loc>{{ post.url | fullSiteUrl(metadata.siteUrl) }}</loc>
     <lastmod>{{ post.date | isoDate }}</lastmod>
   </url>
   {% endfor %}

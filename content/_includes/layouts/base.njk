@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  {% set canonical = (metadata.siteUrl | stripTrailingSlash) + page.url %}
+  {% set canonical = page.url | fullSiteUrl(metadata.siteUrl) %}
   {% set desc = metaDescription | default(description) | default(metadata.description) %}
   <title>{% if title and title != 'Home' %}{{ title }} — {% endif %}{{ metadata.title }}</title>
   <meta name="description" content="{{ desc | xmlEscape }}">
   <link rel="canonical" href="{{ canonical }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ metadata.title }} (RSS)" href="{{ metadata.siteUrl | stripTrailingSlash }}/feed.xml">
+  <link rel="alternate" type="application/rss+xml" title="{{ metadata.title }} (RSS)" href="{{ '/feed.xml' | fullSiteUrl(metadata.siteUrl) }}">
   <meta name="author" content="{{ metadata.author }}">
   <meta property="og:site_name" content="{{ metadata.title | xmlEscape }}">
   <meta property="og:title" content="{% if title and title != 'Home' %}{{ title | xmlEscape }}{% else %}{{ metadata.title | xmlEscape }}{% endif %}">
@@ -32,7 +32,7 @@
   {% if ogImageAbsolute %}
   <meta name="twitter:image" content="{{ ogImageAbsolute }}">
   {% endif %}
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}">
   {% if blogPostingJsonLd %}
   <script type="application/ld+json">{{ blogPostingJsonLd | jsonLdSafe | safe }}</script>
   {% elif websiteJsonLd %}
@@ -41,8 +41,8 @@
 </head>
 <body>
   <header class="site-header">
-    <a class="site-title" href="/">{{ metadata.title }}</a>
-    <nav class="site-nav" aria-label="Primary"><a href="/">Posts</a> · <a href="/feed.xml">RSS</a> · <a href="/llms.txt">llms.txt</a></nav>
+    <a class="site-title" href="{{ '/' | url }}">{{ metadata.title }}</a>
+    <nav class="site-nav" aria-label="Primary"><a href="{{ '/' | url }}">Posts</a> · <a href="{{ '/feed.xml' | url }}">RSS</a> · <a href="{{ '/llms.txt' | url }}">llms.txt</a></nav>
   </header>
   <main class="site-main" id="main">
     {{ content | safe }}

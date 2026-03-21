@@ -2,6 +2,41 @@
 
 All notable changes to this project are documented here. Versions follow the site version in `package.json`.
 
+## 1.3.0 — 2026-03-21
+
+### Summary
+
+Maximum hands-off operation: one CI/Pages workflow, Dependabot for npm and Actions, docs for auto-merge.
+
+### Added
+
+- **`.github/dependabot.yml`** — weekly update PRs for **npm** and **GitHub Actions**.
+- **`workflow_dispatch`** on the Site workflow — manual “Run workflow” from the Actions tab.
+
+### Changed
+
+- **`.github/workflows/site.yml`** — replaces separate CI + deploy files: every **push** and **pull request** runs `npm ci` and two builds (default + Pages env); **deploy to GitHub Pages** only on **push to `main`**, using a generic artifact between jobs so fork PRs only need `contents: read`. Deploy job keeps `concurrency: pages` with `cancel-in-progress: false`.
+- **`README.md`**, **`docs/DEVELOPMENT.md`**, **`docs/GITHUB_PAGES.md`** — document automation, Dependabot, and optional auto-merge.
+
+## 1.2.2 — 2026-03-21
+
+### Summary
+
+GitHub Pages deployment via Actions: correct subpath URLs for project sites, plus documentation.
+
+### Added
+
+- **`.github/workflows/deploy-github-pages.yml`** — on push to `main`, runs `npm ci` / `npm run build` and deploys `_site/` with `SITE_URL` and `PATH_PREFIX` set for `https://<user>.github.io/<repo>/`.
+- **`docs/GITHUB_PAGES.md`** — step-by-step Pages setup, env vars, and troubleshooting.
+
+### Changed
+
+- **`content/_data/metadata.json`** → **`metadata.base.json`** + **`metadata.js`** — `siteUrl` can be overridden with env `SITE_URL` (CI); defaults unchanged for local builds.
+- **`eleventy.config.js`** — `pathPrefix` from env `PATH_PREFIX`; **`fullSiteUrl`** filter for canonical/RSS/sitemap when the site lives under a subpath.
+- **Layouts and templates** — `url` filter on internal links and `/assets/…`; feeds and sitemap use `fullSiteUrl`.
+- **`content/posts/posts.11tydata.js`** — JSON-LD and OG image URLs use the same root joining rules as templates.
+- **`README.md`**, **`docs/DEVELOPMENT.md`**, **`content/llms.txt.njk`** — point to metadata files and GitHub Pages doc.
+
 ## 1.2.1 — 2026-03-21
 
 ### Summary

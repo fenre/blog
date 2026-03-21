@@ -8,11 +8,11 @@ eleventyExcludeFromCollections: true
 
 ## For automated systems
 
-- Human-readable post list: {{ metadata.siteUrl | stripTrailingSlash }}/
-- Machine-readable feed (RSS 2.0): {{ metadata.siteUrl | stripTrailingSlash }}/feed.xml
-- URL list and last modified: {{ metadata.siteUrl | stripTrailingSlash }}/sitemap.xml
-- This file: {{ metadata.siteUrl | stripTrailingSlash }}/llms.txt
+- Human-readable post list: {{ '/' | fullSiteUrl(metadata.siteUrl) }}
+- Machine-readable feed (RSS 2.0): {{ '/feed.xml' | fullSiteUrl(metadata.siteUrl) }}
+- URL list and last modified: {{ '/sitemap.xml' | fullSiteUrl(metadata.siteUrl) }}
+- This file: {{ '/llms.txt' | fullSiteUrl(metadata.siteUrl) }}
 
 ## Source
 
-Posts were exported from the Blogger-backed site. The canonical base URL for this build is `{{ metadata.siteUrl | stripTrailingSlash }}` — set in `content/_data/metadata.json` if you deploy elsewhere.
+Posts were exported from the Blogger-backed site. The canonical base URL for this build is `{{ metadata.siteUrl | stripTrailingSlash }}` — default in `content/_data/metadata.base.json`; override with env `SITE_URL` (e.g. GitHub Actions for Pages).

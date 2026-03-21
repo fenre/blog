@@ -5,7 +5,7 @@ layout: layouts/base.njk
 <ul class="post-list h-feed" role="list">
 {% for post in collections.postsSorted %}
   <li class="post-list__item h-entry" role="listitem">
-    <a class="u-url p-name" href="{{ post.url }}">{{ post.data.title }}</a>
+    <a class="u-url p-name" href="{{ post.url | url }}">{{ post.data.title }}</a>
     <time class="post-list__date dt-published" datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
   </li>
 {% endfor %}
