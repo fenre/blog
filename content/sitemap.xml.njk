@@ -9,14 +9,28 @@ eleventyExcludeFromCollections: true
     <changefreq>weekly</changefreq>
   </url>
   <url>
+    <loc>{{ '/en/' | fullSiteUrl(metadata.siteUrl) }}</loc>
+    <changefreq>weekly</changefreq>
+  </url>
+  <url>
     <loc>{{ '/feed.xml' | fullSiteUrl(metadata.siteUrl) }}</loc>
+    <changefreq>daily</changefreq>
+  </url>
+  <url>
+    <loc>{{ '/en/feed.xml' | fullSiteUrl(metadata.siteUrl) }}</loc>
     <changefreq>daily</changefreq>
   </url>
   <url>
     <loc>{{ '/llms.txt' | fullSiteUrl(metadata.siteUrl) }}</loc>
     <changefreq>monthly</changefreq>
   </url>
-  {% for post in collections.postsSorted %}
+  {% for post in collections.postsSortedNo %}
+  <url>
+    <loc>{{ post.url | fullSiteUrl(metadata.siteUrl) }}</loc>
+    <lastmod>{{ post.date | isoDate }}</lastmod>
+  </url>
+  {% endfor %}
+  {% for post in collections.postsSortedEn %}
   <url>
     <loc>{{ post.url | fullSiteUrl(metadata.siteUrl) }}</loc>
     <lastmod>{{ post.date | isoDate }}</lastmod>

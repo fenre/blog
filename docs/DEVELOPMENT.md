@@ -18,30 +18,35 @@ This file records how the site is assembled so you can **reproduce or redo** the
 
 See [GITHUB_PAGES.md](GITHUB_PAGES.md) for Pages settings and troubleshooting.
 
+**Cursor:** Agent skill for Eleventy + GitHub Pages + this repo’s layout: [`.cursor/skills/eleventy-github-pages-blog/SKILL.md`](../.cursor/skills/eleventy-github-pages-blog/SKILL.md).
+
 ## Repository layout
 
 | Path | Purpose |
 |------|---------|
-| `content/index.md` | Home page (uses `layouts/home.njk`). |
-| `content/posts/<slug>/index.md` | One Markdown file per post; YAML front matter (`title`, `date`, `source`, `categories`). |
+| `content/index.md` | Norwegian home (uses `layouts/home.njk`); default language **nb**. |
+| `content/en/index.md` | English home at **`/en/`**. |
+| `content/_data/i18n.json` | UI strings for **no** / **en** (nav, footer, language switch labels). |
+| `content/posts/<slug>/index.md` | **Norwegian** post body and front matter; URL `/posts/<slug>/`. |
+| `content/posts/<slug>/index.en.md` | **English** translation; URL `/en/posts/<slug>/`. |
 | `content/posts/<slug>/images/` | Images for that post; Markdown uses relative paths like `images/foo.jpg`. |
-| `content/posts/posts.11tydata.js` | Directory data: post layout, `tags: posts`, computed `permalink` `/posts/<slug>/`. |
+| `content/posts/posts.11tydata.js` | Directory data: post layout, `tags: posts`, locale-aware permalinks, `hreflang` helpers. |
 | `content/_includes/layouts/` | Nunjucks layouts: `base.njk`, `home.njk`, `post.njk`. |
 | `content/assets/` | Static assets copied to `_site/assets/` (e.g. CSS). |
-| `eleventy.config.js` | Eleventy input/output, passthrough copies, date filters, `postsSorted` collection. |
+| `eleventy.config.js` | Eleventy input/output, passthrough copies, `localeDate`, `postsSortedNo` / `postsSortedEn` collections. |
 | `.gitignore` | Ignore rules: `node_modules/`, `_site/`, Python venv/cache (`.venv/`, `__pycache__/`), and common local files. |
 | `scripts/export_blogger_fsudmann.py` | Fetches Blogger Atom feed for `www.fsudmann.com`, writes/updates posts and images. |
 | `requirements.txt` | Python dependencies for the export script. |
 | `_site/` | **Generated** — do not edit; created by `npm run build`. Gitignored. |
 | `content/_data/metadata.base.json` | Default site-wide values (`siteUrl`, `title`, `description`, `author`, `locale`). Loaded by `metadata.js`. |
 | `content/_data/metadata.js` | Exposes `metadata` to templates; **`siteUrl` can be overridden with env `SITE_URL`** (used by GitHub Actions for Pages). |
-| `content/feed.xml.njk`, `sitemap.xml.njk`, `robots.txt.njk`, `llms.txt.njk` | Generated machine-readable endpoints (RSS, sitemap, robots, llms.txt). |
+| `content/feed.xml.njk`, `content/en/feed.xml.njk`, `sitemap.xml.njk`, `robots.txt.njk`, `llms.txt.njk` | RSS (nb + en), sitemap, robots, llms.txt. |
 
 ## AI and machine-readable discovery
 
 After `npm run build`, the published site exposes:
 
-- **`/feed.xml`** — RSS 2.0; full post content in `content:encoded` for readers and tools.
+- **`/feed.xml`** — RSS 2.0 (Norwegian posts); **`/en/feed.xml`** — English posts.
 - **`/sitemap.xml`** — URL list with `lastmod` for crawlers.
 - **`/robots.txt`** — `Sitemap:` line (uses `metadata.siteUrl`).
 - **`/llms.txt`** — Short summary and links for LLM-oriented discovery (see [llms.txt initiative](https://llmstxt.org/)).
@@ -84,14 +89,14 @@ Use this when the live blog has new or changed posts and you want to refresh `co
 **After re-export**
 
 - Run `npm run build` again and check `_site/`.
-- If you add new posts, Eleventy picks them up automatically as long as they stay under `content/posts/<slug>/index.md`.
+- If you add new posts, add **`index.md`** (Norwegian) and **`index.en.md`** (English) under `content/posts/<slug>/`, or the language switch and RSS will be incomplete.
 
 ## Eleventy behaviour (quick reference)
 
 - **Input directory:** `content/` (see `eleventy.config.js` → `dir.input`).
-- **Permalinks:** Posts are served as `/posts/<slug>/` (see `content/posts/posts.11tydata.js`).
+- **Permalinks:** Norwegian posts `/posts/<slug>/`, English `/en/posts/<slug>/` (see `content/posts/posts.11tydata.js`).
 - **Passthrough:** Image extensions under `content/posts/**` are copied into `_site/posts/...` so relative `images/` links resolve.
-- **Home post list:** `collections.postsSorted` — posts tagged `posts`, sorted by date descending.
+- **Home post lists:** `collections.postsSortedNo` and `collections.postsSortedEn` — posts tagged `posts`, filtered by `locale`, sorted by date descending.
 
 ## Release process
 

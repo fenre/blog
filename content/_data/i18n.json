@@ -1,0 +1,30 @@
+{
+  "no": {
+    "navPosts": "Innlegg",
+    "navRss": "RSS",
+    "navLlms": "llms.txt",
+    "switchTo": "English",
+    "homeHeading": "Innlegg",
+    "footerLine": "Oppskrifter migrert fra",
+    "postSource": "Original på Blogger",
+    "rssTitle": "Fredrik Lima Sudmann (RSS)",
+    "siteDescription": "Personlig blogg med oppskrifter og matnotater — statisk arkiv av innlegg opprinnelig publisert på Blogger.",
+    "metaPostFallback": "Oppskrifter og matnotater fra",
+    "readMore": "Les mer",
+    "skipToMain": "Hopp til innhold"
+  },
+  "en": {
+    "navPosts": "Posts",
+    "navRss": "RSS",
+    "navLlms": "llms.txt",
+    "switchTo": "Norsk",
+    "homeHeading": "Posts",
+    "footerLine": "Recipes migrated from",
+    "postSource": "Original on Blogger",
+    "rssTitle": "Fredrik Lima Sudmann (RSS)",
+    "siteDescription": "Personal blog with recipes and food notes — static archive of posts originally published on Blogger.",
+    "metaPostFallback": "Recipes and food notes from",
+    "readMore": "Read more",
+    "skipToMain": "Skip to main content"
+  }
+}

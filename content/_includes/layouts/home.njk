@@ -1,12 +1,41 @@
 ---
 layout: layouts/base.njk
 ---
-<h1 class="p-name">Posts</h1>
-<ul class="post-list h-feed" role="list">
-{% for post in collections.postsSorted %}
-  <li class="post-list__item h-entry" role="listitem">
-    <a class="u-url p-name" href="{{ post.url | url }}">{{ post.data.title }}</a>
-    <time class="post-list__date dt-published" datetime="{{ post.date | isoDate }}">{{ post.date | readableDate }}</time>
-  </li>
+{% set loc = locale | default('no') %}
+{% set t = i18n[loc] %}
+<section class="blogger-feed h-feed" aria-labelledby="feed-heading">
+  <h1 id="feed-heading" class="blogger-feed__heading p-name">{% if loc == 'en' %}{{ i18n.en.homeHeading }}{% else %}{{ i18n.no.homeHeading }}{% endif %}</h1>
+{% if loc == 'en' %}
+{% for post in collections.postsSortedEn %}
+  <article class="post-card{% if post.data.firstOgImagePath %} post-card--with-thumb{% endif %} h-entry">
+    {% if post.data.firstOgImagePath %}
+    <a class="post-card__thumb-link" href="{{ post.url | url }}" tabindex="-1" aria-hidden="true">
+      <img class="post-card__thumb" src="{{ post.data.firstOgImagePath | url }}" alt="" width="320" height="200" loading="lazy" decoding="async">
+    </a>
+    {% endif %}
+    <div class="post-card__body">
+      <h2 class="post-card__title"><a class="u-url" href="{{ post.url | url }}">{{ post.data.title }}</a></h2>
+      <p class="post-card__meta"><time class="dt-published" datetime="{{ post.date | isoDate }}">{{ post.date | localeDate('en') }}</time></p>
+      <p class="post-card__snippet">{{ post.templateContent | excerpt(260) }}</p>
+      <p class="post-card__footer"><a class="post-card__read-more" href="{{ post.url | url }}">{{ t.readMore }}</a></p>
+    </div>
+  </article>
 {% endfor %}
-</ul>
+{% else %}
+{% for post in collections.postsSortedNo %}
+  <article class="post-card{% if post.data.firstOgImagePath %} post-card--with-thumb{% endif %} h-entry">
+    {% if post.data.firstOgImagePath %}
+    <a class="post-card__thumb-link" href="{{ post.url | url }}" tabindex="-1" aria-hidden="true">
+      <img class="post-card__thumb" src="{{ post.data.firstOgImagePath | url }}" alt="" width="320" height="200" loading="lazy" decoding="async">
+    </a>
+    {% endif %}
+    <div class="post-card__body">
+      <h2 class="post-card__title"><a class="u-url" href="{{ post.url | url }}">{{ post.data.title }}</a></h2>
+      <p class="post-card__meta"><time class="dt-published" datetime="{{ post.date | isoDate }}">{{ post.date | localeDate('no') }}</time></p>
+      <p class="post-card__snippet">{{ post.templateContent | excerpt(260) }}</p>
+      <p class="post-card__footer"><a class="post-card__read-more" href="{{ post.url | url }}">{{ t.readMore }}</a></p>
+    </div>
+  </article>
+{% endfor %}
+{% endif %}
+</section>

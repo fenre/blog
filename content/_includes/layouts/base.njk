@@ -1,20 +1,28 @@
+{% set loc = locale | default('no') %}
+{% set t = i18n[loc] %}
 <!DOCTYPE html>
-<html lang="{{ metadata.language }}">
+<html lang="{% if loc == 'en' %}en{% else %}nb{% endif %}">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% set canonical = page.url | fullSiteUrl(metadata.siteUrl) %}
   {% set desc = metaDescription | default(description) | default(metadata.description) %}
-  <title>{% if title and title != 'Home' %}{{ title }} — {% endif %}{{ metadata.title }}</title>
+  <title>{% if title and title != 'Hjem' and title != 'Home' %}{{ title }} — {% endif %}{{ metadata.title }}</title>
   <meta name="description" content="{{ desc | xmlEscape }}">
   <link rel="canonical" href="{{ canonical }}">
-  <link rel="alternate" type="application/rss+xml" title="{{ metadata.title }} (RSS)" href="{{ '/feed.xml' | fullSiteUrl(metadata.siteUrl) }}">
+  {% if hreflangNo and hreflangEn %}
+  <link rel="alternate" hreflang="nb" href="{{ hreflangNo }}">
+  <link rel="alternate" hreflang="en" href="{{ hreflangEn }}">
+  <link rel="alternate" hreflang="x-default" href="{{ hreflangNo }}">
+  {% endif %}
+  {% set feedPath = '/en/feed.xml' if loc == 'en' else '/feed.xml' %}
+  <link rel="alternate" type="application/rss+xml" title="{{ t.rssTitle | xmlEscape }}" href="{{ feedPath | fullSiteUrl(metadata.siteUrl) }}">
   <meta name="author" content="{{ metadata.author }}">
   <meta property="og:site_name" content="{{ metadata.title | xmlEscape }}">
-  <meta property="og:title" content="{% if title and title != 'Home' %}{{ title | xmlEscape }}{% else %}{{ metadata.title | xmlEscape }}{% endif %}">
+  <meta property="og:title" content="{% if title and title != 'Hjem' and title != 'Home' %}{{ title | xmlEscape }}{% else %}{{ metadata.title | xmlEscape }}{% endif %}">
   <meta property="og:description" content="{{ desc | xmlEscape }}">
   <meta property="og:url" content="{{ canonical }}">
-  <meta property="og:locale" content="{{ metadata.locale | default('en_GB') }}">
+  <meta property="og:locale" content="{{ 'en_GB' if loc == 'en' else 'nb_NO' }}">
   {% if tags | hasTag('posts') %}
   <meta property="og:type" content="article">
   {% if date %}
@@ -27,11 +35,14 @@
   <meta property="og:type" content="website">
   {% endif %}
   <meta name="twitter:card" content="{% if ogImageAbsolute %}summary_large_image{% else %}summary{% endif %}">
-  <meta name="twitter:title" content="{% if title and title != 'Home' %}{{ title | xmlEscape }}{% else %}{{ metadata.title | xmlEscape }}{% endif %}">
+  <meta name="twitter:title" content="{% if title and title != 'Hjem' and title != 'Home' %}{{ title | xmlEscape }}{% else %}{{ metadata.title | xmlEscape }}{% endif %}">
   <meta name="twitter:description" content="{{ desc | xmlEscape }}">
   {% if ogImageAbsolute %}
   <meta name="twitter:image" content="{{ ogImageAbsolute }}">
   {% endif %}
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@700&family=Roboto:ital,wght@0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="{{ '/assets/css/main.css' | url }}">
   {% if blogPostingJsonLd %}
   <script type="application/ld+json">{{ blogPostingJsonLd | jsonLdSafe | safe }}</script>
@@ -39,16 +50,26 @@
   <script type="application/ld+json">{{ websiteJsonLd | jsonLdSafe | safe }}</script>
   {% endif %}
 </head>
-<body>
+<body class="theme-blogger">
+  <a class="skip-link" href="#main">{{ t.skipToMain }}</a>
   <header class="site-header">
-    <a class="site-title" href="{{ '/' | url }}">{{ metadata.title }}</a>
-    <nav class="site-nav" aria-label="Primary"><a href="{{ '/' | url }}">Posts</a> · <a href="{{ '/feed.xml' | url }}">RSS</a> · <a href="{{ '/llms.txt' | url }}">llms.txt</a></nav>
+    <div class="site-header__inner">
+    <a class="site-title" href="{% if loc == 'no' %}{{ '/' | url }}{% else %}{{ '/en/' | url }}{% endif %}">{{ metadata.title }}</a>
+    <div class="site-header__right">
+      {% if alternateUrl %}
+      <p class="lang-switch" role="navigation" aria-label="Language">
+        <a class="lang-switch__link" href="{{ alternateUrl | url }}" hreflang="{% if loc == 'no' %}en{% else %}nb{% endif %}">{{ t.switchTo }}</a>
+      </p>
+      {% endif %}
+      <nav class="site-nav" aria-label="Primary"><a href="{% if loc == 'no' %}{{ '/' | url }}{% else %}{{ '/en/' | url }}{% endif %}">{{ t.navPosts }}</a> · <a href="{{ feedPath | url }}">{{ t.navRss }}</a> · <a href="{{ '/llms.txt' | url }}">{{ t.navLlms }}</a></nav>
+    </div>
+    </div>
   </header>
   <main class="site-main" id="main">
     {{ content | safe }}
   </main>
   <footer class="site-footer">
-    <p>Recipes migrated from <a href="https://www.fsudmann.com" rel="noopener noreferrer">fsudmann.com</a>.</p>
+    <p>{{ t.footerLine }} <a href="https://www.fsudmann.com" rel="noopener noreferrer">fsudmann.com</a>.</p>
   </footer>
 </body>
 </html>

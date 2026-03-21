@@ -1,6 +1,6 @@
 # blog
 
-Static export of posts from [fsudmann.com](https://www.fsudmann.com) (Blogger, custom domain), built with [Eleventy](https://www.11ty.dev/).
+Static export of posts from [fsudmann.com](https://www.fsudmann.com) (Blogger, custom domain), built with [Eleventy](https://www.11ty.dev/). **Norwegian** is the default language (**`/`, `/posts/...`**); **English** lives under **`/en/`** and **`/en/posts/...`**, with a language control in the header.
 
 ## Layout
 

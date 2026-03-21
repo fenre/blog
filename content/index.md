@@ -1,5 +1,5 @@
 ---
 layout: layouts/home.njk
-title: Home
-description: Recipe and food posts — archive migrated from Blogger, available as HTML and RSS.
+title: Hjem
+description: Personlig blogg med oppskrifter og matnotater — arkiv migrert fra Blogger, også som HTML og RSS.
 ---

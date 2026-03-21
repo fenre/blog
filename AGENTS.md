@@ -14,3 +14,4 @@ If the change is trivial (e.g. typo in a post only), a version bump may be optio
 
 - [`docs/DEVELOPMENT.md`](docs/DEVELOPMENT.md) — layout, export script, Eleventy, troubleshooting.
 - [`RELEASE_NOTES.md`](RELEASE_NOTES.md) — what each version included.
+- [`.cursor/skills/eleventy-github-pages-blog/SKILL.md`](.cursor/skills/eleventy-github-pages-blog/SKILL.md) — Cursor skill for Eleventy, GitHub Pages, Actions, and this repo’s conventions.

@@ -7,8 +7,8 @@ function fullSiteUrl(siteRoot, pathname) {
 }
 
 export default {
-  locale: "no",
-  alternateUrl: "/en/",
+  locale: "en",
+  alternateUrl: "/",
   eleventyComputed: {
     hreflangNo: (data) => {
       const base = (data.metadata?.siteUrl || "").replace(/\/$/, "");
@@ -24,9 +24,9 @@ export default {
         "@context": "https://schema.org",
         "@type": "WebSite",
         name: data.metadata?.title,
-        url: base,
-        description: data.metadata?.description,
-        inLanguage: "nb",
+        url: fullSiteUrl(base, "/en/"),
+        description: data.metadata?.descriptionEn || data.metadata?.description,
+        inLanguage: "en",
         publisher: {
           "@type": "Organization",
           name: data.metadata?.title,

@@ -1,55 +1,41 @@
 ---
-title: Chicken stock
+title: Kyllingkraft
 date: 2023-02-06T12:42:00.006+01:00
 source: https://www.fsudmann.com/2023/02/chicken-stock.html
 categories:
-  - Chicken
-  - Food
-  - Recipe
+  - Kylling
+  - Mat
+  - Oppskrift
 ---
 
-This is a really good chicken stock that can be used for a number of other dishes. It takes a while to make, but it will give really good flavour to any soup or sauce, risotto or anything you use it with.
+Dette er en skikkelig god kyllingkraft som kan brukes i mange andre retter. Den tar litt tid å lage, men gir fantastisk smak til supper, sauser, risotto og det meste annet du bruker den til.
 
 [![](images/img-001-953fd6b32c.jpg)](images/img-002-100ad225b0.jpg)
 
-  
-  
+### Ingredienser:
 
+  * 1 kylling
 
-###   
+  * 2 gulrøtter
 
+  * 1/2 purre
 
-### Ingredients:
+  * 1 løk
 
-  * 1 chicken
+  * 2 sjalottløk
 
-  * 2 carrots
+  * 1 sellerirot
 
-  * 1/2 leek
+  * 2–3 laurbærblad
 
-  * 1 onion
+  * 1 ts hele pepperkorn
 
-  * 2 shallots
-
-  * 1 celery root
-
-  * 2-3 bay leaves
-
-  * 1 ts whole pepper grains
-
-  * 1,5 liter water
+  * 1,5 liter vann
 
   * 1 ts salt
 
+### Fremgangsmåte:
 
+  * Del kyllingen i ledd. Kutt grønnsakene.
 
-
-###   
-
-
-### Steps:
-
-  * Partition the chicken. Chop the vegetables.
-
-  * Put everything in a casserole and let it simmer for 2 – 2,5 hours.
-
+  * Ha alt i en kjele og la det småkoke i 2–2,5 timer.

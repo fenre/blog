@@ -1,80 +1,67 @@
 ---
-title: Quesadilla with beans, cheese and greens
+title: Quesadilla med bønner, ost og grønt
 date: 2023-02-06T12:46:00.007+01:00
 source: https://www.fsudmann.com/2023/02/quesadilla-with-beans-cheese-and-greens.html
 categories:
-  - Food
-  - Recipe
-  - Vegetarian
+  - Mat
+  - Oppskrift
+  - Vegetar
 ---
 
-I always thought quesadillas needed some kind of meat to be interesting. That was until I tried this.
+Jeg trodde alltid quesadillas trengte kjøtt for å bli interessante. Det var til jeg prøvde denne.
 
 [![](images/img-001-40e18efa8c.jpg)](images/img-002-9c15b1f309.jpg)
 
-  
+## Ingredienser:
 
+  * 1 løk, hakket
 
-## Ingredients:
+  * 1 kinesisk hvitløk, finhakket
 
-  * 1 onion, chopped
+  * 1 rød eller gul paprika, hakket
 
-  * 1 chinese garlic, finely chopped
+  * 2 gulrøtter, revet
 
-  * 1 red or yellow paprika, chopped
+  * 1 boks (400 g) svarte eller brune bønner
 
-  * 2 carrots, grated
+  * 1 ts tomatpuré
 
-  * 1 can (400gr) black or brown beans
-
-  * 1 ts tomato purée
-
-  * 1 ts cumin
+  * 1 ts spisskummen
 
   * 1 ts paprika
 
-  * 1/2 ts smoked paprika
+  * 1/2 ts røkt paprika
 
   * 2 ts oregano
 
-  * 1 ts sugar
+  * 1 ts sukker
 
-  * 1 can (400gr) chopped tomatoes
+  * 1 boks (400 g) hakkede tomater
 
-  * salt and pepper
+  * salt og pepper
 
-  * 8 large corn tortillas
+  * 8 store mais tortillalefser
 
-  * 150 gr grated cheese
+  * 150 g revet ost
 
+Til guacamole:
 
+  * 2 store, modne avokadoer
 
+  * 2 fedd hvitløk
 
-And for the accompanying guacamole:
+  * salt og pepper
 
-  * 2 large, ripe avocadoes
+  * 1 lime, saft
 
-  * 2 cloves of garlic
+  * 1 håndfull fersk koriander
 
-  * salt and pepper
+## Fremgangsmåte:
 
-  * 1 lime, the juice
+Ha en middels stor panne på middels varme, og tilsett løk og hvitløk. La dem mykne. Tilsett paprika og gulrot. Gi dem noen minutter, så tilsetter du bønner, tomatpuré og krydder. Vent et minutt eller to, og tilsett hakkede tomater.
 
-  * 1 handful of fresh koriander
+Bønnegryten kan nå småkoke i 5–10 minutter mens du lager guacamole.
 
+Tilbered quesadillas ved å fordele bønneggryten jevnt på tortillen, deretter ost, og deretter en ny tortill på toppen. Jeg drysser ofte litt olivenolje på øverste tortill for smak og for at den ikke skal tørke ut.
 
-
-
-##   
-
-
-## Steps:
-
-Start with a medium pan on medium heat, and add onions and garlic. Let them simmer until soft. Add paprika and carrots. Give them a few minutes, then add beans, tomato purée and spices. Wait a minute or two, then add the chopped tomatoes.
-
-The bean stew can now simmer for 5-10 minutes while you prepare the guacamole.
-
-Prepare the quesadillas by putting an even spread of bean stew on the tortilla, then cheese, then another tortilla on top. I usually cover the top tortilla with a sprinkle of olive oil, for taste, and to keep it from drying.
-
-Bake in oven (200 degrees) until the cheese has melted, and serve immediately with guacamole, salsa and a green salat.
-
+Stek i ovn (200 °C) til osten er smeltet, og server med en gang med guacamole, salsa og grønn salat.

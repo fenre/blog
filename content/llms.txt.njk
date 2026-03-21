@@ -8,11 +8,13 @@ eleventyExcludeFromCollections: true
 
 ## For automated systems
 
-- Human-readable post list: {{ '/' | fullSiteUrl(metadata.siteUrl) }}
-- Machine-readable feed (RSS 2.0): {{ '/feed.xml' | fullSiteUrl(metadata.siteUrl) }}
-- URL list and last modified: {{ '/sitemap.xml' | fullSiteUrl(metadata.siteUrl) }}
+- Norwegian (default) post list: {{ '/' | fullSiteUrl(metadata.siteUrl) }}
+- English post list: {{ '/en/' | fullSiteUrl(metadata.siteUrl) }}
+- RSS (Norwegian posts): {{ '/feed.xml' | fullSiteUrl(metadata.siteUrl) }}
+- RSS (English posts): {{ '/en/feed.xml' | fullSiteUrl(metadata.siteUrl) }}
+- Sitemap: {{ '/sitemap.xml' | fullSiteUrl(metadata.siteUrl) }}
 - This file: {{ '/llms.txt' | fullSiteUrl(metadata.siteUrl) }}
 
 ## Source
 
-Posts were exported from the Blogger-backed site. The canonical base URL for this build is `{{ metadata.siteUrl | stripTrailingSlash }}` — default in `content/_data/metadata.base.json`; override with env `SITE_URL` (e.g. GitHub Actions for Pages).
+Posts were exported from the Blogger-backed site. The canonical base URL for this build is `{{ metadata.siteUrl | stripTrailingSlash }}` — default in `content/_data/metadata.base.json`; override with env `SITE_URL` (e.g. GitHub Actions for Pages). Each post is available in Norwegian and English (`/posts/...` and `/en/posts/...`).

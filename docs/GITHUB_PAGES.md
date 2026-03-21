@@ -13,7 +13,7 @@ That pattern is a **project site**. The HTML/CSS and `index.html` are produced b
 | Concept | Detail |
 |--------|--------|
 | **Source vs output** | The repo holds **source** (`content/`, `eleventy.config.js`, …). The **website files** live in `_site/` after a build. `_site/` is gitignored. |
-| **Project URL** | If the repo is `fenre/blog`, the public site is **`https://fenre.github.io/blog/`** (note the `/blog/` segment). Links and CSS must use that prefix; the workflow sets `PATH_PREFIX` and `SITE_URL` for you. |
+| **Project URL** | If the repo is `fenre/blog`, the public site is **`https://fenre.github.io/blog/`** (note the `/blog/` segment). English pages are under **`/blog/en/`**. The workflow sets `PATH_PREFIX` and `SITE_URL` for you. |
 | **User/org site (optional)** | A repo named **`<username>.github.io`** (no subdirectory) is served at `https://<username>.github.io/`. This project’s workflow targets a **project site**; for a user site you would change `PATH_PREFIX` to `/` and `SITE_URL` to `https://<username>.github.io`. |
 
 ---

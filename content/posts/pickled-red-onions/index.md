@@ -1,37 +1,27 @@
 ---
-title: Pickled red onions
+title: Syltet rødløk
 date: 2023-02-06T12:47:00.009+01:00
 source: https://www.fsudmann.com/2023/02/pickled-red-onions.html
 categories:
-  - Food
-  - Recipe
-  - Vegetarian
+  - Mat
+  - Oppskrift
+  - Vegetar
 ---
 
-Pickled onions are a treat that can be added to many dishes to add an extra piece of flavour. They are really easy to make, and last for days and weeks in the refridgerator.
+Syltet løk er en godbit som kan tilsettes mange retter for ekstra smak. Det er veldig enkelt å lage, og holder i flere dager og uker i kjøleskapet.
 
 [![](images/img-001-ff49eefd8f.jpg)](images/img-002-863c2c280b.jpg)
 
-  
+### Ingredienser:
 
+  * 2 rødløk
 
-### Ingredients:
+  * 1/2 dl eplecidereddik
 
-  * 2 red onions
-
-  * 1/2 dl apple cider vinegar
-
-  * 1 tbs cane sugar
+  * 1 ss rørsukker
 
   * 1/2 ts salt
 
+### Fremgangsmåte:
 
-
-
-###   
-
-
-### Steps:
-
-Add everything but the onions to a pot. When it boils, add the sliced onions and stir. Add the lid, turn off the heat and let it stand until cold.
-
+Ha alt unntatt løken i en kjele. Når det koker, tilsetter du den skivede løken og rører. Legg på lokk, skru av varmen og la det stå til det er kaldt.

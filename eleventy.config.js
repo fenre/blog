@@ -11,6 +11,19 @@ export default function (eleventyConfig) {
     });
   });
 
+  /** @param {string} [locale] `no` | `en` */
+  eleventyConfig.addFilter("localeDate", (value, locale) => {
+    if (!value) return "";
+    const d = value instanceof Date ? value : new Date(value);
+    if (Number.isNaN(d.getTime())) return "";
+    const loc = locale === "en" ? "en-GB" : "nb-NO";
+    return d.toLocaleDateString(loc, {
+      year: "numeric",
+      month: "short",
+      day: "numeric",
+    });
+  });
+
   eleventyConfig.addFilter("htmlDateString", (value) => {
     if (!value) return "";
     const d = value instanceof Date ? value : new Date(value);
@@ -77,8 +90,33 @@ export default function (eleventyConfig) {
     return d.toUTCString();
   });
 
-  eleventyConfig.addCollection("postsSorted", (collectionApi) =>
-    collectionApi.getFilteredByTag("posts").sort((a, b) => b.date - a.date),
+  /** Plain-text excerpt for home cards (Blogger-style snippets). */
+  eleventyConfig.addFilter("excerpt", (content, maxLen = 220) => {
+    if (!content) return "";
+    const text = String(content)
+      .replace(/<script[\s\S]*?<\/script>/gi, "")
+      .replace(/<img[^>]*>/gi, " ")
+      .replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    const n = Number(maxLen) || 220;
+    if (text.length <= n) return text;
+    const cut = text.slice(0, n);
+    const lastSpace = cut.lastIndexOf(" ");
+    return (lastSpace > n * 0.6 ? cut.slice(0, lastSpace) : cut).trim() + "…";
+  });
+
+  eleventyConfig.addCollection("postsSortedNo", (collectionApi) =>
+    collectionApi
+      .getFilteredByTag("posts")
+      .filter((item) => item.data.locale === "no")
+      .sort((a, b) => b.date - a.date),
+  );
+  eleventyConfig.addCollection("postsSortedEn", (collectionApi) =>
+    collectionApi
+      .getFilteredByTag("posts")
+      .filter((item) => item.data.locale === "en")
+      .sort((a, b) => b.date - a.date),
   );
 
   eleventyConfig.addPassthroughCopy({

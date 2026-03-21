@@ -2,6 +2,58 @@
 
 All notable changes to this project are documented here. Versions follow the site version in `package.json`.
 
+## 1.5.0 — 2026-03-21
+
+### Summary
+
+**Blogger-style look:** gray page background, white cards, classic orange links, Merriweather + Roboto, feed snippets with thumbnails and “Read more”, and a white panel for single posts.
+
+### Added
+
+- **`excerpt` filter** (`eleventy.config.js`) — plain-text snippets for home cards.
+- **i18n** — `readMore`, `skipToMain` (Norwegian + English).
+
+### Changed
+
+- **`content/assets/css/main.css`** — full theme: `.theme-blogger`, header bar, `.post-card` / `.post-card--with-thumb`, `.blogger-post`, typography and link colors aligned with classic Blogger (e.g. `#ff6600`).
+- **`content/_includes/layouts/base.njk`** — `theme-blogger` body class, Google Fonts (Merriweather, Roboto), skip link using `skipToMain`, header inner wrapper.
+- **`content/_includes/layouts/home.njk`** — card layout with optional image, date, snippet, read-more link.
+- **`content/_includes/layouts/post.njk`** — `blogger-post` class on the article.
+
+Build: `npm run build` (unchanged).
+
+## 1.4.1 — 2026-03-21
+
+### Added
+
+- **Cursor Agent skill** — [`.cursor/skills/eleventy-github-pages-blog/SKILL.md`](.cursor/skills/eleventy-github-pages-blog/SKILL.md) with [reference.md](.cursor/skills/eleventy-github-pages-blog/reference.md): Eleventy, GitHub Pages, Actions, bilingual content rules, and links to official docs.
+
+### Changed
+
+- **`AGENTS.md`** — points agents at the new skill for Eleventy/Pages work.
+
+## 1.4.0 — 2026-03-21
+
+### Summary
+
+Bilingual site: **Norwegian (default)** and **English**, with a header language control, `hreflang`, and separate RSS feeds.
+
+### Added
+
+- **`content/_data/i18n.json`** — UI strings for Norwegian and English (nav, footer, language switch).
+- **`content/en/index.md`** — English home at `/en/`; **`content/en/feed.xml.njk`** — English RSS.
+- **`index.en.md`** next to each post — English URLs under `/en/posts/<slug>/`; Norwegian remains at `/posts/<slug>/`.
+- **`localeDate`** filter — `nb-NO` / `en-GB` formatting.
+- **`collections.postsSortedNo`** / **`postsSortedEn`** — post lists per language.
+
+### Changed
+
+- **`metadata.base.json`** — default `language` / `locale` Norwegian (`nb`); **`descriptionEn`** for English meta where needed.
+- **`content/posts/posts.11tydata.js`** — locale-aware permalinks, alternate URLs, `hreflang` helpers, JSON-LD `inLanguage`.
+- **`content/_includes/layouts/base.njk`**, **`home.njk`**, **`post.njk`** — language toggle, localized chrome, `html lang="nb"` / `en`.
+- **`content/feed.xml.njk`**, **`content/sitemap.xml.njk`**, **`content/llms.txt.njk`** — Norwegian + English entries.
+- All **post bodies** — Norwegian in `index.md`, English in `index.en.md` (translated or paired from the former export).
+
 ## 1.3.1 — 2026-03-21
 
 ### Fixed
