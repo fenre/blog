@@ -1,0 +1,18 @@
+---
+permalink: /llms.txt
+eleventyExcludeFromCollections: true
+---
+# {{ metadata.title }}
+
+> {{ metadata.description }}
+
+## For automated systems
+
+- Human-readable post list: {{ metadata.siteUrl | stripTrailingSlash }}/
+- Machine-readable feed (RSS 2.0): {{ metadata.siteUrl | stripTrailingSlash }}/feed.xml
+- URL list and last modified: {{ metadata.siteUrl | stripTrailingSlash }}/sitemap.xml
+- This file: {{ metadata.siteUrl | stripTrailingSlash }}/llms.txt
+
+## Source
+
+Posts were exported from the Blogger-backed site. The canonical base URL for this build is `{{ metadata.siteUrl | stripTrailingSlash }}` — set in `content/_data/metadata.json` if you deploy elsewhere.

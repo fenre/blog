@@ -1,0 +1,20 @@
+---
+layout: layouts/base.njk
+---
+<article class="post h-entry" itemscope itemtype="https://schema.org/BlogPosting">
+  <header class="post__header">
+    <h1 class="post__title p-name" itemprop="headline">{{ title }}</h1>
+    <p class="post__meta">
+      <time class="dt-published" datetime="{{ date | isoDate }}" itemprop="datePublished">{{ date | readableDate }}</time>
+      {% if categories and categories.length %}
+        <span class="post__categories"> · {{ categories | join(", ") }}</span>
+      {% endif %}
+    </p>
+    {% if source %}
+      <p class="post__source"><a href="{{ source }}" rel="noopener noreferrer" itemprop="isBasedOn">Original on Blogger</a></p>
+    {% endif %}
+  </header>
+  <div class="post__body e-content" itemprop="articleBody">
+    {{ content | safe }}
+  </div>
+</article>

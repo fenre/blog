@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="{{ metadata.language }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% set canonical = (metadata.siteUrl | stripTrailingSlash) + page.url %}
+  {% set desc = metaDescription | default(description) | default(metadata.description) %}
+  <title>{% if title and title != 'Home' %}{{ title }} — {% endif %}{{ metadata.title }}</title>
+  <meta name="description" content="{{ desc | xmlEscape }}">
+  <link rel="canonical" href="{{ canonical }}">
+  <link rel="alternate" type="application/rss+xml" title="{{ metadata.title }} (RSS)" href="{{ metadata.siteUrl | stripTrailingSlash }}/feed.xml">
+  <meta name="author" content="{{ metadata.author }}">
+  <meta property="og:site_name" content="{{ metadata.title | xmlEscape }}">
+  <meta property="og:title" content="{% if title and title != 'Home' %}{{ title | xmlEscape }}{% else %}{{ metadata.title | xmlEscape }}{% endif %}">
+  <meta property="og:description" content="{{ desc | xmlEscape }}">
+  <meta property="og:url" content="{{ canonical }}">
+  <meta property="og:locale" content="{{ metadata.locale | default('en_GB') }}">
+  {% if tags | hasTag('posts') %}
+  <meta property="og:type" content="article">
+  {% if date %}
+  <meta property="article:published_time" content="{{ date | isoDate }}">
+  {% endif %}
+  {% if ogImageAbsolute %}
+  <meta property="og:image" content="{{ ogImageAbsolute }}">
+  {% endif %}
+  {% else %}
+  <meta property="og:type" content="website">
+  {% endif %}
+  <meta name="twitter:card" content="{% if ogImageAbsolute %}summary_large_image{% else %}summary{% endif %}">
+  <meta name="twitter:title" content="{% if title and title != 'Home' %}{{ title | xmlEscape }}{% else %}{{ metadata.title | xmlEscape }}{% endif %}">
+  <meta name="twitter:description" content="{{ desc | xmlEscape }}">
+  {% if ogImageAbsolute %}
+  <meta name="twitter:image" content="{{ ogImageAbsolute }}">
+  {% endif %}
+  <link rel="stylesheet" href="/assets/css/main.css">
+  {% if blogPostingJsonLd %}
+  <script type="application/ld+json">{{ blogPostingJsonLd | jsonLdSafe | safe }}</script>
+  {% elif websiteJsonLd %}
+  <script type="application/ld+json">{{ websiteJsonLd | jsonLdSafe | safe }}</script>
+  {% endif %}
+</head>
+<body>
+  <header class="site-header">
+    <a class="site-title" href="/">{{ metadata.title }}</a>
+    <nav class="site-nav" aria-label="Primary"><a href="/">Posts</a> · <a href="/feed.xml">RSS</a> · <a href="/llms.txt">llms.txt</a></nav>
+  </header>
+  <main class="site-main" id="main">
+    {{ content | safe }}
+  </main>
+  <footer class="site-footer">
+    <p>Recipes migrated from <a href="https://www.fsudmann.com" rel="noopener noreferrer">fsudmann.com</a>.</p>
+  </footer>
+</body>
+</html>
