@@ -54,7 +54,7 @@ And for the accompanying guacamole:
 
   * 1 lime, the juice
 
-  * 1 handful of fresh koriander
+  * 1 handful of fresh coriander
 
 ## Steps:
 
@@ -64,4 +64,4 @@ The bean stew can now simmer for 5-10 minutes while you prepare the guacamole.
 
 Prepare the quesadillas by putting an even spread of bean stew on the tortilla, then cheese, then another tortilla on top. I usually cover the top tortilla with a sprinkle of olive oil, for taste, and to keep it from drying.
 
-Bake in oven (200 degrees) until the cheese has melted, and serve immediately with guacamole, salsa and a green salat.
+Bake in oven (200 degrees) until the cheese has melted, and serve immediately with guacamole, salsa and a green salad.
