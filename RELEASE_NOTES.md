@@ -2,6 +2,15 @@
 
 All notable changes to this project are documented here. Versions follow the site version in `package.json`.
 
+## 1.5.1 — 2026-07-14
+
+### Changed
+
+- **`.github/workflows/site.yml`** — consolidated Dependabot updates: `actions/checkout@v6`, `actions/setup-node@v6`, `actions/upload-artifact@v7`, `actions/download-artifact@v8`, `actions/upload-pages-artifact@v5`, `actions/deploy-pages@v5`.
+- **`@11ty/eleventy`** — 3.1.5 → 3.1.6 (Node 26 deprecation fix, dependency audit fixes).
+
+Build: `npm run build` (unchanged).
+
 ## 1.5.0 — 2026-03-21
 
 ### Summary
