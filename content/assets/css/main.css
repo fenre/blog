@@ -316,22 +316,3 @@ body {
 .post__body a:hover {
   color: var(--blogger-link-hover);
 }
-
-/* ——— Footer ——— */
-.site-footer {
-  padding: 1.25rem 1.25rem 2rem;
-  border-top: 1px solid var(--blogger-border);
-  background: var(--blogger-header-bg);
-  font-size: 0.8rem;
-  color: var(--blogger-muted);
-  text-align: center;
-}
-
-.site-footer a {
-  color: var(--blogger-link);
-  font-weight: 500;
-}
-
-.site-footer a:hover {
-  color: var(--blogger-link-hover);
-}
