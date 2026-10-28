@@ -1,6 +1,7 @@
 {
   "no": {
     "navPosts": "Innlegg",
+    "navBrew": "Ølbrygging",
     "navRss": "RSS",
     "navLlms": "llms.txt",
     "switchTo": "English",
@@ -13,6 +14,7 @@
   },
   "en": {
     "navPosts": "Posts",
+    "navBrew": "Home brewing",
     "navRss": "RSS",
     "navLlms": "llms.txt",
     "switchTo": "Norsk",
